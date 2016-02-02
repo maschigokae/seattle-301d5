@@ -17,6 +17,15 @@
   border-bottom: 1px solid #ccc;
 }
 
+a {
+  text-decoration: none;
+}
+
+/*We could do it this way as well:*/
+/*.main-nav li:last-child:before {
+  content: "my content";
+}*/
+
 /* TODO: Style the filters so they look good on small screens:
     Use the full width, and remove the list bullet. */
 
