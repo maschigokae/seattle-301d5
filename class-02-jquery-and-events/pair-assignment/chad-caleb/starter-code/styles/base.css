@@ -1,5 +1,4 @@
-/* TODO: Add some coordinated colors to make the blog more distinguished:
-         Use an accent color for all links, and remove their underline. */
+/* changed al colors to be warmer */
 
 body {
   line-height: 1.5;
@@ -21,16 +20,21 @@ p {
 address {
   display: inline-block;
 }
-
+ul {
+  list-style: none;
+}
 /*LINK STYLES
 =======================================*/
 
 a, a:link, a:active {
-  color: #777;
+  color: #fee9ad;
+  text-decoration: none;
 }
 
 a:hover, a:focus {
+  color: brown;
 }
 
 a:visited {
+  color: black;
 }
