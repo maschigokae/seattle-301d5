@@ -1,5 +1,15 @@
 // TODO: Wrap the entire contents of this file in an IIFE.
 // Pass in to the IIFE a module, upon which objects can be attached for later access.
+
+(function(module) {
+
+  // My shit goes here
+  // Note: this is an example of an immediately invoked function expression
+  var myShit = 'shit';
+  module.myShit = myShit;
+
+}(window));
+
 function Article (opts) {
   this.author = opts.author;
   this.authorUrl = opts.authorUrl;
@@ -56,16 +66,31 @@ Article.fetchAll = function() {
 // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
 Article.numWordsAll = function() {
   return Article.all.map(function(article) {
-    return // Get the total number of words in this article
+    console.log('mapping...');
+    return article.body.match(/\b\w+/g).length;
+    // Get the total number of words in this article
   })
   .reduce(function(a, b) {
-    return // Sum up all the values in the collection
+    return a + b;
+    // Sum up all the values in the collection
   })
 };
 
 // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names.
 Article.allAuthors = function() {
-  return // Don't forget to read the docs on map and reduce!
+  return Article.all.map(function(article) {
+    return article.author;
+  })
+  .reduce(function(i, j) {
+    // console.log(i, j, m, t);
+    if (i.indexOf(j) === -1) {
+      // console.log(j);
+      i.push(j);
+      // I have no clue what I'm doing here.
+    }
+    return i;
+  }, []);
+  // Don't forget to read the docs on map and reduce!
 };
 
 Article.numWordsByAuthor = function() {
@@ -73,7 +98,19 @@ Article.numWordsByAuthor = function() {
   // the author's name, and one for the total number of words across all articles written by the specified author.
   return Article.allAuthors().map(function(author) {
     return {
+      name: author,
+      wordcount: Article.all.map(function(article) {
+        if (article.author === author) {
+          console.log(article.body.match(/\b\w+/g).length);
+          return article.body.match(/\b\w+/g).length;
+        } else {
+          return 0;
+        }
+      })
+      .reduce(function(t, y) {
+        return t + y;
+      })
       // someKey: someValOrFunctionCall().map(...).reduce(...), ...
-    }
+    };
   })
 };
