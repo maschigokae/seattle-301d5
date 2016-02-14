@@ -4,6 +4,7 @@ function Article (opts) {
   // TODO: Use the js object passed in to complete this contructor function:
   // Save ALL the properties of `opts` into `this`.
   this.author = opts.author;
+  console.log(opts);
 }
 
 Article.prototype.toHtml = function() {
