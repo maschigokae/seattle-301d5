@@ -73,17 +73,17 @@
     return Article.all.map(function(article) {
       return article.author;
     })
-    .reduce(function(i, j) {
-      // console.log(i, j, m, t);
-      if (i.indexOf(j) === -1) {
-        // console.log(j);
-        i.push(j);
+    .reduce(function(acc, name) {
+      if (acc.indexOf(name) === -1) {
+        // OR: (acc.indexOf(name) < 0)
+        // i.e. IF IT DOESN'T HAVE AN INDEX VALUE IN THE ARRAY.
+        acc.push(name);
         // I have no clue what I'm doing here.
       }
-      return i;
+      return acc;
     }, []);
-    // Don't forget to read the docs on map and reduce!
   };
+  // Don't forget to read the docs on map and reduce!
 
   Article.numWordsByAuthor = function() {
     // DONE: Transform each author string into an object with 2 properties: One for
